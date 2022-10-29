@@ -1,0 +1,11 @@
+.header__burger.active {
+   .header__bar {
+      transform: rotate(225deg);
+      &::after {
+         transform: translateY(0) rotate(90deg);
+      }
+      &::before {
+         transform: translateY(0) rotate(90deg);
+      }
+   }
+}

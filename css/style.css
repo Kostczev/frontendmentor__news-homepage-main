@@ -1,0 +1,391 @@
+@charset "UTF-8";
+/*отступы*/
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+/*перещет области*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/*отключение обводки*/
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+/*делаем блочными некоторые теги*/
+nav, footer, header, aside {
+  display: block;
+}
+
+/*Уравниваем поведение шрифтов и тд для разных браузеров (также запрещает самовольное увеличени шрифтов (айфон))*/
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+/*Говоорим тегам наследовать семейство шрифта*/
+input, button, textarea {
+  font-family: inherit;
+  display: block;
+}
+
+/*еще куча фич, таких как отклчение крестиков и отступов в разных браузерах*/
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+/*Обнуляем все заголовки*/
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+.header__burger.active .header__bar {
+  transform: rotate(225deg);
+}
+.header__burger.active .header__bar::after {
+  transform: translateY(0) rotate(90deg);
+}
+.header__burger.active .header__bar::before {
+  transform: translateY(0) rotate(90deg);
+}
+
+body.lock {
+  overflow: hidden;
+}
+
+.wrapper {
+  min-height: 100%;
+  background-color: hsl(36deg, 100%, 99%);
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: hsl(233deg, 8%, 79%);
+  display: flex;
+  flex-direction: column;
+}
+
+.attribution {
+  color: hsl(236deg, 13%, 42%);
+  margin: 0 auto;
+}
+.attribution a {
+  color: hsl(240deg, 100%, 5%);
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 4vw;
+  flex: 1 1 auto;
+}
+
+.header {
+  padding: 28px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__title {
+  font-family: "Abril Fatface", cursive;
+  font-size: 50px;
+  letter-spacing: -5px;
+  font-weight: 800;
+  color: hsl(240deg, 100%, 5%);
+}
+.header__burger {
+  height: 5rem;
+  width: 5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.header__burger:hover .header__bar, .header__burger:hover .header__bar::before, .header__burger:hover .header__bar::after {
+  background-color: hsl(5deg, 85%, 63%);
+}
+.header__burger .header__bar {
+  transition: 0.3s;
+  width: 40px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: hsl(240deg, 100%, 5%);
+  transition: 0.3s;
+  position: relative;
+  z-index: 20;
+}
+.header__burger .header__bar::after, .header__burger .header__bar::before {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background-color: hsl(240deg, 100%, 5%);
+  transition: 0.3s;
+}
+.header__burger .header__bar::after {
+  transform: translateY(9px);
+}
+.header__burger .header__bar::before {
+  transform: translateY(-9px);
+}
+.header__links {
+  display: none;
+}
+
+.substrate {
+  transition: 0.3s;
+  position: fixed;
+  z-index: 9;
+  height: 100vh;
+  width: 100%;
+  background-color: hsl(240deg, 100%, 5%);
+  opacity: 0;
+}
+
+.navigation {
+  transition: 0.3s;
+  position: fixed;
+  z-index: 10;
+  width: 68vw;
+  height: 100vh;
+  right: 0;
+  background-color: hsl(36deg, 100%, 99%);
+  transform: translateX(100vw);
+}
+.navigation__links {
+  margin-top: 25vh;
+}
+.navigation__link {
+  color: hsl(240deg, 100%, 5%);
+  transition: 0.3s;
+  transition-property: color;
+  font-weight: 500;
+  display: block;
+  margin-left: 20px;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+.navigation__link:hover {
+  color: hsl(5deg, 85%, 63%);
+}
+
+.main__picture {
+  grid-area: image;
+}
+.main__image {
+  max-width: 92vw;
+  margin-bottom: 30px;
+}
+.main__headline {
+  margin: auto;
+  color: hsl(240deg, 100%, 5%);
+  font-size: 41px;
+  font-weight: 800;
+  grid-area: headline;
+  margin-bottom: 15px;
+}
+.main__about-big-news {
+  grid-area: about-big-news;
+}
+.main__annotation {
+  color: hsl(236deg, 13%, 42%);
+  line-height: 24px;
+}
+.main__read-more {
+  transition: 0.3s;
+  transition-property: background-color;
+  color: hsl(36deg, 100%, 99%);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  background-color: hsl(5deg, 85%, 63%);
+  padding: 20px 35px 18px 35px;
+  margin: 30px 0;
+  display: inline-block;
+}
+.main__read-more:hover {
+  background-color: hsl(240deg, 100%, 5%);
+}
+.main__new-news {
+  grid-area: new-news;
+}
+.main__small-block {
+  margin: 60px 0;
+}
+
+.new-news {
+  margin: 35px 0;
+  background-color: hsl(240deg, 100%, 5%);
+  padding: 35px 25px;
+}
+.new-news__title {
+  color: hsl(35deg, 100%, 77%);
+  font-size: 30px;
+  font-weight: 700;
+  padding-bottom: 35px;
+}
+.new-news hr {
+  margin: 25px 0;
+  padding: 0;
+  height: 0;
+  border: none;
+  border-top: 1px solid hsl(233deg, 8%, 79%);
+}
+.new-news__headline {
+  transition: 0.3s;
+  transition-property: color;
+  padding: 10px;
+  margin: -10px;
+  font-size: 20px;
+  font-weight: 800;
+  color: hsl(36deg, 100%, 99%);
+}
+.new-news__headline:hover {
+  color: hsl(35deg, 100%, 77%);
+}
+.new-news__annotation {
+  margin-top: 10px;
+  line-height: 28px;
+}
+
+.new {
+  margin: 30px 0;
+  display: flex;
+  height: 128px;
+}
+.new img {
+  height: 100%;
+}
+.new__right-column {
+  margin-left: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.new__number {
+  font-size: 30px;
+  font-weight: 700;
+}
+.new__headline {
+  color: hsl(240deg, 100%, 5%);
+  font-weight: 800;
+  font-size: 19px;
+}
+.new__annotation {
+  color: hsl(236deg, 13%, 42%);
+  line-height: 28px;
+}
+
+@media (min-width: 850px) {
+  .attribution {
+    margin: 60px auto 10px auto;
+  }
+  .container {
+    max-width: 1100px;
+    padding: 0;
+  }
+  .navigation {
+    display: none;
+  }
+  .header {
+    padding: 4vh 0 2vh;
+  }
+  .header__burger {
+    display: none;
+  }
+  .header__links {
+    display: flex;
+    margin: 0 -10px;
+  }
+  .header__link {
+    transition: 0.3s;
+    transition-property: color;
+    padding: 10px;
+    margin-left: 30px;
+    color: hsl(236deg, 13%, 42%);
+  }
+  .header__link:hover {
+    color: hsl(5deg, 85%, 63%);
+  }
+  .main__large-block {
+    display: grid;
+    grid-template: auto/1fr 1fr 1fr;
+    grid-template-areas: "image image new-news" "headline about-big-news new-news";
+    gap: 30px;
+    margin-bottom: 70px;
+  }
+  .main__small-block {
+    margin: 0;
+  }
+  .main__image {
+    max-height: 300px;
+    width: 100%;
+    margin: 0;
+  }
+  .main__about-big-news {
+    position: relative;
+  }
+  .main__headline {
+    font-size: 60px;
+    margin: 0;
+  }
+  .main__read-more {
+    margin: 0;
+    position: absolute;
+    bottom: 0px;
+  }
+  .main__small-block {
+    display: grid;
+    grid-template: auto/1fr 1fr 1fr;
+    gap: 30px;
+  }
+  .main .new-news {
+    margin: 0;
+  }
+  .main .new-news__title {
+    font-size: 40px;
+  }
+  .main .new {
+    margin: 0;
+  }
+}
